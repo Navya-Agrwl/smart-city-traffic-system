@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 
 const navItems = [
   { to: "/", icon: "📊", label: "Dashboard" },
-  { to: "/traffic", icon: "🚦", label: "Traffic" },
-  { to: "/emergency", icon: "🚑", label: "Emergency" },
+  { to: "/traffic-monitoring", icon: "🚦", label: "Traffic Monitoring" },
+  { to: "/traffic-signals", icon: "🚥", label: "Traffic Signals" },
+  { to: "/incident-reports", icon: "⚠️", label: "Incident Reports" },
   { to: "/analytics", icon: "📈", label: "Analytics" },
 ]
-
 function Sidebar({ isOpen, onClose }) {
   return (
     <>
