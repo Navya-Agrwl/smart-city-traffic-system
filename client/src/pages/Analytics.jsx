@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import {
   LineChart,
   Line,
@@ -9,14 +10,21 @@ import {
 } from "recharts"
 
 function Analytics() {
-  const trafficData = [
-    { hour: "6 AM", vehicles: 120 },
-    { hour: "8 AM", vehicles: 450 },
-    { hour: "10 AM", vehicles: 300 },
-    { hour: "12 PM", vehicles: 380 },
-    { hour: "2 PM", vehicles: 250 },
-    { hour: "6 PM", vehicles: 600 },
-  ]
+  const [trafficData, setTrafficData] = useState([])
+
+  useEffect(() => {
+    const fetchTrafficData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/traffic")
+        const data = await response.json()
+        setTrafficData(data)
+      } catch (error) {
+        console.error("Error fetching traffic data:", error)
+      }
+    }
+
+    fetchTrafficData()
+  }, [])
 
   return (
     <div className="p-8">
